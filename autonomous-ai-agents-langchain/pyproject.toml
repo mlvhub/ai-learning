@@ -7,8 +7,17 @@ requires-python = ">=3.11"
 dependencies = [
     "jupyter>=1.1.1",
     "langchain>=0.3.18",
+    "langchain-community>=0.3.17",
+    "langchain-openai>=0.3.6",
+    "langgraph>=0.2.72",
+    "langgraph-checkpoint>=2.0.15",
+    "langgraph-checkpoint-sqlite>=2.0.5",
+    "langsmith>=0.3.8",
     "openai>=1.63.0",
+    "pandas>=2.2.3",
     "python-dotenv>=1.0.1",
+    "streamlit>=1.42.0",
+    "tavily-python>=0.5.1",
 ]
 
 [dependency-groups]
