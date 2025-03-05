@@ -1,0 +1,2 @@
+jupytext FILE:
+    uv run jupytext --to py:percent {FILE}
