@@ -33,7 +33,7 @@ df.info()
 # ## Explore and select features
 
 # %%
-# Drop categoricals and any unseless columns
+# Drop categoricals and any useless columns
 df = df.drop(['MODELYEAR', 'MAKE', 'MODEL', 'VEHICLECLASS', 'TRANSMISSION', 'FUELTYPE',],axis=1)
 
 # %%
@@ -238,4 +238,64 @@ plt.ylabel("Emission")
 # ### 1. Determine and print the parameters for the best-fit linear regression line for CO2 emission with respect to engine size
 
 # %%
-df.iloc[:,[0,1]]
+# only use ENGINESIZE
+X_train_1 = X_train[:,[0]]
+
+# create a model object
+regressor = linear_model.LinearRegression()
+
+# train the model in the training data
+regressor.fit(X_train_1, y_train)
+
+# Print the coefficients
+coef_ =  regressor.coef_
+intercept_ = regressor.intercept_
+
+print ('Coefficients: ',coef_)
+print ('Intercept: ',intercept_)
+
+# %% [markdown]
+# ### 2. Produce a scatterplot of CO2 emission against ENGINESIZE and include the best-fit regression line to the training data
+
+# %%
+plt.scatter(X_train_1[:,0], y_train,  color='blue')
+plt.plot(X_train_1[:,0], coef_[0,0] * X_train_1[:,0] + intercept_[0], '-r')
+plt.xlabel("Engine size")
+plt.ylabel("Emission")
+
+# %% [markdown]
+# ### 3. Generate the same scatterplot and best-fit regression line, but now base the result on the test data set
+
+# %%
+plt.scatter(X_test[:,0], y_test,  color='blue')
+plt.plot(X_test[:,0], coef_[0,0] * X_test[:,0] + intercept_[0], '-r')
+plt.xlabel("Engine size")
+plt.ylabel("Emission")
+
+# %% [markdown]
+# 4. Repeat the same modeling but use FUELCONSUMPTION_COMB_MPG as the independent variable instead. Display the model coefficients including the intercept
+
+# %%
+X_train_2 = X_train[:,[1]]
+
+# create a model object
+regressor = linear_model.LinearRegression()
+
+# train the model in the training data
+regressor.fit(X_train_2, y_train)
+
+# Print the coefficients
+coef_ =  regressor.coef_
+intercept_ = regressor.intercept_
+
+print ('Coefficients: ',coef_)
+print ('Intercept: ',intercept_)
+
+# %% [markdown]
+# ### 5. Generate a scatter plot showing the results as before on the test data.
+
+# %%
+plt.scatter(X_train_2[:,0], y_train,  color='blue')
+plt.plot(X_train_2[:,0], coef_[0,0] * X_train_2[:,0] + intercept_[0], '-r')
+plt.xlabel("FUELCONSUMPTION_COMB_MPG")
+plt.ylabel("Emission")
