@@ -1,2 +1,4 @@
+# https://cheatography.com/linux-china/cheat-sheets/justfile/
+
 jupytext FILE:
-    uv run jupytext --to py:percent {FILE}
+    uv run jupytext --to py:percent {{FILE}}
