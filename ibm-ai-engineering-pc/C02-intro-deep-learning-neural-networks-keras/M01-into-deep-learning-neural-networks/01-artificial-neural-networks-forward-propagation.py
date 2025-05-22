@@ -275,3 +275,11 @@ def forward_propagate(network, inputs):
 forward_propagate(small_network, inputs)
 
 # %%
+# quiz
+0.5 * 0.55 + -0.35 * 0.45 + 0.15
+
+# %%
+1.0 / (1.0 + np.exp(-(0.5 * 0.55 + -0.35 * 0.45 + 0.15)))
+
+
+# %%
